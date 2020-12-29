@@ -21,12 +21,9 @@ export default {
         }),
         //createUser: This action creates a new entry for a new user in firebase.
         //It is called from Register.vue
-        createUser: firestoreAction( (payload) => {
+        createUser: firestoreAction( (context, payload) => {
           return db.collection('users').add(payload)
-          .then(cred => {
-            const rForm = document.querySelector('#regForm')
-            regForm.reset()
-          })
+
         }),
         // LOGIN: firestoreAction(({ context, payload }) => {
         //   return new Promise({resolve, reject} => {

@@ -1,27 +1,19 @@
 <template>
   <div>
     <!-- Default form register -->
-    <form id="regForm" class="border border-light p-5" @submit.prevent="onSubmit">
+    <form class="border border-light p-5" @submit.prevent="submitForm">
       <p class="text-center h4 mb-4">Register</p>
 
       <div class="form-row mb-4">
         <div class="col">
           <!-- First name -->
           <label for="defaultRegisterFormFirstName">First Name</label>
-          <input
-            v-model="firstName"
-            type="text"
-            class="form-control"
-          />
+          <input v-model="firstName" type="text" class="form-control" />
         </div>
         <div class="col">
           <!-- Last name -->
           <label for="mr-auto">Last Name</label>
-          <input
-            v-model="lastName"
-            type="text"
-            class="form-control"
-          />
+          <input v-model="lastName" type="text" class="form-control" />
         </div>
       </div>
 
@@ -61,6 +53,14 @@
 </template>
 
 <script>
+import {
+  required,
+  minLength,
+  maxLenght,
+  alpha,
+  email,
+} from "vuelidate/lib/validators";
+
 import { mapActions } from "vuex";
 
 export default {
@@ -74,15 +74,39 @@ export default {
     };
   },
   computed: {},
+  validations: {
+    firstName: {
+      required,
+      alpha,
+    },
+    lastName: {
+      required,
+      alpha,
+    },
+    eMail: {
+      required,
+      email,
+    },
+    password: {
+      required,
+      maxLenght: maxLenght(20),
+      minLength: minLength(6),
+    },
+  },
   methods: {
     ...mapActions(["createUser"]),
-    onSubmit() {
-      this.createUser({
-        firstName: this.firstName,
-        lastName: this.lastName,
-        eMail: this.eMail,
-        password: this.password,
-      });
+    submitForm() {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        `firstName: ${this.firstName}, lastName: ${this.lastName}, eMail: ${this.eMail}, password: ${this.password}`;
+      } else {
+        this.createUser({
+          firstName: this.firstName,
+          lastName: this.lastName,
+          eMail: this.eMail,
+          password: this.password,
+        });
+      }
     },
   },
 };
