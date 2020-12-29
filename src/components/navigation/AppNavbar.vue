@@ -1,7 +1,8 @@
 <template>
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark indigo lighten-1">
-  <a class="navbar-brand" href="#">Logotype</a>
+  <div class="container">
+  <router-link class="navbar-brand" to="/">Logotype</router-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,8 +12,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
     <ul class="navbar-nav ml-auto">
       <li><router-link class="nav-link nav-item" to="/" exact>Home</router-link></li>
-      <li><router-link class="nav-link nav-item" to="/About" exact>About</router-link></li>
       <li><router-link class="nav-link nav-item" to="/BlogView" exact>Blog</router-link></li>
+      <li><router-link class="nav-link nav-item" to="/Products" exact>Products</router-link></li>
+      <li><router-link class="nav-link nav-item" to="/MyAccount" exact>My account</router-link></li>
+      <li><router-link class="nav-link nav-item" to="/About" exact>About</router-link></li>
     </ul>
     <ul class="navbar-nav nav-flex-icons">
       <li><router-link class="nav-link nav-item" to="/Login" exact>Login</router-link></li>
@@ -24,15 +27,16 @@
       </li>
     </ul>
   </div>
-
+</div>
 </nav>
 <!--/.Navbar -->
 </template>
 
 <script>
+
+
 export default {
     name: 'AppNavbar',
-    
 }
 </script>
 

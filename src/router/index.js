@@ -5,10 +5,6 @@ import BlogView from '../views/BlogView.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 
-
-
-
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,6 +35,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/MyAccount',
+    name: 'myaccount',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/authorised/MyAccount.vue')
   },
   {
     path: '/integrity',

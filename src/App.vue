@@ -12,13 +12,20 @@
 
 import AppNavbar from './components/navigation/AppNavbar'
 import AppFooter from './components/navigation/AppFooter'
+import { mapActions } from "vuex";
 
 export default {
   name: 'App',
   components: {
     AppNavbar,
     AppFooter
-  }
+  },
+   methods: {
+    ...mapActions(['bindUser']),
+  },
+  created(){
+    this.bindUser()
+  },
 }
 </script>
 

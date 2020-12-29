@@ -1,60 +1,92 @@
 <template>
   <div>
-   <!-- Default form register -->
-<form class="text-center border border-light p-5" action="#!">
+    <!-- Default form register -->
+    <form id="regForm" class="border border-light p-5" @submit.prevent="onSubmit">
+      <p class="text-center h4 mb-4">Register</p>
 
-    <p class="h4 mb-4">Sign up</p>
-
-    <div class="form-row mb-4">
+      <div class="form-row mb-4">
         <div class="col">
-            <!-- First name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+          <!-- First name -->
+          <label for="defaultRegisterFormFirstName">First Name</label>
+          <input
+            v-model="firstName"
+            type="text"
+            class="form-control"
+          />
         </div>
         <div class="col">
-            <!-- Last name -->
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+          <!-- Last name -->
+          <label for="mr-auto">Last Name</label>
+          <input
+            v-model="lastName"
+            type="text"
+            class="form-control"
+          />
         </div>
-    </div>
+      </div>
 
-    <!-- E-mail -->
-    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
-
-    <!-- Password -->
-    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      <!-- E-mail -->
+      <label for="">Email</label>
+      <input
+        v-model="eMail"
+        type="email"
+        id="defaultRegisterFormEmail"
+        class="form-control mb-4"
+      />
+      <!-- Password -->
+      <label for="defaultRegisterFormPassword mr-auto">Password</label>
+      <input
+        v-model="password"
+        type="password"
+        id="defaultRegisterFormPassword"
+        class="form-control"
+        aria-describedby="defaultRegisterFormPasswordHelpBlock"
+      />
+      <small
+        id="defaultRegisterFormPasswordHelpBlock"
+        class="form-text text-muted mb-4"
+      >
         At least 8 characters and 1 digit
-    </small>
-
-    <!-- Phone number -->
-    <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
-    <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-        Optional - for two step authentication
-    </small>
-
-    <!-- Newsletter -->
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
-        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
-    </div>
-
-    <!-- Sign up button -->
-    <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
-    <!-- Terms of service -->
-    <p>By clicking
-        <em>Sign up</em> you agree to our
+      </small>
+      <!-- Sign up button -->
+      <button class="btn btn-info my-4 btn-block" type>Register</button>
+      <!-- Terms of service -->
+      <p>
+        By clicking <em>Register</em> you agree to our
         <a href="" target="_blank">terms of service</a>
-
-</form>
-<!-- Default form register -->   
+      </p>
+    </form>
+    <!-- Default form register -->
   </div>
 </template>
 
 <script>
-export default {
+import { mapActions } from "vuex";
 
-}
+export default {
+  name: "Register",
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      eMail: "",
+      password: "",
+    };
+  },
+  computed: {},
+  methods: {
+    ...mapActions(["createUser"]),
+    onSubmit() {
+      this.createUser({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        eMail: this.eMail,
+        password: this.password,
+      });
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>
