@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import BlogView from '../views/BlogView.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import store from '../store'
+
 
 Vue.use(VueRouter)
 
@@ -16,7 +18,10 @@ const routes = [
   {
     path: '/BlogView',
     name: 'blogview',
-    component: BlogView
+    component: BlogView,
+    meta: { 
+      requiresAuth: true,
+    },
   },
   {
     path: '/Login',
@@ -34,7 +39,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
     path: '/MyAccount',
@@ -42,7 +47,11 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/authorised/MyAccount.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/authorised/MyAccount.vue'),
+    meta: { 
+      requiresAuth: true,
+    },
+    
   },
   {
     path: '/integrity',
@@ -61,11 +70,21 @@ const routes = [
   },
   
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if(store.getters.user){
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
+})
 export default router
