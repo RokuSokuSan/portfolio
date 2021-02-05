@@ -31,9 +31,21 @@ export default new Vuex.Store({
     // It is called from Register.vue
     createUser: firestoreAction((context, payload) => {
       auth.createUserWithEmailAndPassword(payload.email, payload.password)
+      .then(
+        this.user.updateProfile({
+          firstName: payload.firstName,
+          lastname: payload.lastName,
+          displayName: payload.displayName
+        })
+      )
     }),
     logInUser: firestoreAction((context, payload) => {
       auth.signInWithEmailAndPassword(payload.email, payload.password)
+      .then(
+        user => {
+          alert(`You are logged in as ${user.email}`)
+        }
+      )
     }),
     deleteUser: firestoreAction((context, payload) => {
       auth.remove(payload.email, payload.password)

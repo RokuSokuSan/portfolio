@@ -16,11 +16,11 @@
       <li><router-link class="nav-link nav-item" to="/Products" exact>Products</router-link></li>
       <li v-if="user"><router-link class="nav-link nav-item" to="/MyAccount" exact>My account</router-link></li>
       <li><router-link class="nav-link nav-item" to="/About" exact>About</router-link></li>
+      <!--Login, logout and register -->
       <li v-if="user"><a class="nav-link nav-item" to="#" @click="signOff">Logout</a></li>
-    </ul>
-    <ul class="navbar-nav nav-flex-icons">
       <li v-if="!user"><router-link class="nav-link nav-item" to="/Login" exact>Login</router-link></li>
-      <li class="nav-item avatar">
+      <li v-if="!user"><router-link class="nav-link nav-item" to="/Register" exact>Register</router-link></li>
+      <li v-if="user" class="nav-item avatar">
         <a class="nav-link p-0" href="#">
           <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
             alt="avatar image" height="35">
@@ -68,4 +68,3 @@ export default {
   font-weight: bolder;
 
 }
-</style>

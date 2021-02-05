@@ -4,7 +4,10 @@ import Home from '../views/Home.vue'
 import BlogView from '../views/BlogView.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Chat from '../views/Chat.vue'
+import AppChat from '../components/chat/AppChat.vue'
 import store from '../store'
+// import firebase from 'firebase'
 
 
 Vue.use(VueRouter)
@@ -19,9 +22,20 @@ const routes = [
     path: '/BlogView',
     name: 'blogview',
     component: BlogView,
-    meta: { 
+    meta: {
       requiresAuth: true,
     },
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat,
+  },
+  {
+    path: '/appchat',
+    name: 'AppChat',
+    component: AppChat,
+    props: true,
   },
   {
     path: '/Login',
@@ -48,10 +62,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/authorised/MyAccount.vue'),
-    meta: { 
+    meta: {
       requiresAuth: true,
     },
-    
+
   },
   {
     path: '/integrity',
@@ -68,7 +82,7 @@ const routes = [
     name: 'Logedout',
     component: () => import('../views/Logedout.vue')
   },
-  
+
 ]
 const router = new VueRouter({
   mode: 'history',
@@ -76,9 +90,41 @@ const router = new VueRouter({
   routes
 })
 
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     //Check if NOT logged in
+//     if (!firebase.auth().currentUser) {
+//       //Go to login
+//       next({
+//         path: '/login',
+//         query: {
+//           redirect: to.fullPath
+//         }
+//       })
+//     } else {
+//       //Proceed to route
+//       next()
+//     }
+//   } else if(to.matched.some(record => record.meta.requiresGuest)) {
+//     //Check if logged in
+//     if (firebase.auth().currentUser) {
+//       //Go to login
+//       next({
+//         path: '/',
+//         query: {
+//           redirect: to.fullPath
+//         }
+//       })
+//     } else {
+//       //Proceed to route
+//       next()
+//     }
+//   }
+// })
+
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if(store.getters.user){
+    if (store.getters.user) {
       next()
     } else {
       next('/login')

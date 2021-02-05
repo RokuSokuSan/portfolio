@@ -4,7 +4,7 @@
     <form id="regForm" class="border border-light p-5" @submit.prevent="submitForm">
       <p class="text-center h4 mb-4">Register</p>
 
-      <!-- <div class="form-row mb-4">
+    <div class="form-row mb-4">
         <div class="col">
          
           <label>First Name</label>
@@ -19,7 +19,14 @@
           <span v-if="!$v.lastName.required && $v.lastName.$dirty" class="text-danger">Last Name is required</span>
           <span v-if="!$v.lastName.alpha && $v.lastName.$dirty" class="text-danger">Last Name must be in alpha!</span>
         </div>
-      </div> -->
+              <!-- Username -->
+      <div class="col">
+        <label>Displayname</label>
+        <input v-model="displayName" class="form-control" />
+        <span v-if="!$v.displayName.required && $v.displayName.$dirty" class="text-danger">Displayname is required</span>
+          <span v-if="!$v.displayName.alpha && $v.displayName.$dirty" class="text-danger">Displayname must be in alpha!</span>
+      </div>
+      </div>
 
       <!-- E-mail -->
       <div class="form-group">
@@ -48,14 +55,15 @@
 
 <script>
 import { mapActions } from "vuex";
-import { required, minLength, maxLength, email } from "vuelidate/lib/validators";
+import { required, minLength, maxLength, email, alpha } from "vuelidate/lib/validators";
 
 export default {
   name: "Register",
   data() {
     return {
-      // firstName: '',
-      // lastName: '',
+      displayName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
     };
@@ -64,14 +72,18 @@ export default {
 
   },
   validations: {
-    // firstName: {
-    //   required,
-    //   alpha,
-    // },
-    // lastName: {
-    //   required,
-    //   alpha,
-    // },
+    displayName: {
+      required,
+      alpha,
+    },
+    firstName: {
+      required,
+      alpha,
+    },
+    lastName: {
+      required,
+      alpha,
+    },
     email: {
       required,
       email,
@@ -91,9 +103,9 @@ export default {
           this.$v.$reset(), 
           console.log(email),  
           this.createUser({
-
-          // firstName: this.firstName,
-          // lastName: this.lastName,
+          displayName: this.displayName,
+          firstName: this.firstName,
+          lastName: this.lastName,
           email: this.email,
           password: this.password
         })
