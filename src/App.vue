@@ -31,6 +31,7 @@ methods: {
       if (user) {
         this.addUser(user)
         console.log('User logged in', user.displayName)
+        alert(`You are logged in as ${user.displayName}`)
       }else{
         console.log('User logged out', user)
       }

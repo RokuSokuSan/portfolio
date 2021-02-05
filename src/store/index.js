@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { auth } from '../../firebase'
+import { db, auth } from '../../firebase'
 import { vuexfireMutations, firestoreAction } from 'vuexfire'
 
 
@@ -24,7 +24,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
- 
+    //bindUser: This action is to get data from firestore so we can display it in our view.
+    // Only to be used when there is a collection created.
+    bindUser: firestoreAction(({ bindFirestoreRef }) => {
+      return bindFirestoreRef('members', db.collection('members'))
+    }),
     // createUser: This action creates a new entry for a new user in firebase.
     // It is called from Register.vue
     createUser: firestoreAction((context, payload) => {
@@ -32,6 +36,8 @@ export default new Vuex.Store({
       .then((userCredentials) => {
         console.log(userCredentials)
         userCredentials.user.updateProfile({
+          firstName: payload.firstName,
+          lastName: payload.lastName,
           displayName: payload.displayName
         })
       })
@@ -40,7 +46,6 @@ export default new Vuex.Store({
       auth.signInWithEmailAndPassword(payload.email, payload.password)
       .then(
         user => {
-          console.log(user)
           alert(`You are logged in as ${user.displayName}`)
         }
       )
@@ -50,11 +55,6 @@ export default new Vuex.Store({
     }),
     addUser: ({commit}, user) => {
       commit('ADD_USER', {user})
-    },
-       //bindUser: This action is to get data from firestore so we can display it in our view.
-    // Only to be used when there is a collection created.
-    // bindUser: firestoreAction(({ bindFirestoreRef }) => {
-    //   return bindFirestoreRef('members', db.collection('members'))
-    // }),
+    }
   },
 })
