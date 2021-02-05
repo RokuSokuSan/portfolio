@@ -30,5 +30,17 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RokuSokuSan/portfolio.git"
+  },
+  "author": "anthony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RokuSokuSan/portfolio/issues"
+  },
+  "homepage": "https://github.com/RokuSokuSan/portfolio#readme"
 }
