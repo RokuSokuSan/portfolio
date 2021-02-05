@@ -36,8 +36,6 @@ export default new Vuex.Store({
       .then((userCredentials) => {
         console.log(userCredentials)
         userCredentials.user.updateProfile({
-          firstName: payload.firstName,
-          lastName: payload.lastName,
           displayName: payload.displayName
         })
       })
@@ -45,8 +43,9 @@ export default new Vuex.Store({
     logInUser: firestoreAction((context, payload) => {
       auth.signInWithEmailAndPassword(payload.email, payload.password)
       .then(
-        user => {
+        (user) => {
           alert(`You are logged in as ${user.displayName}`)
+          console.log('User logged in', user.name)
         }
       )
     }),

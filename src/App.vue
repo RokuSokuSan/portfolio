@@ -12,7 +12,7 @@
 
 import AppNavbar from './components/navigation/AppNavbar'
 import AppFooter from './components/navigation/AppFooter'
-import Firebase from 'firebase'
+import {auth} from '../firebase'
 import { mapActions } from "vuex"
 
 export default {
@@ -26,12 +26,11 @@ methods: {
     ...mapActions(['addUser'])
   },
   mounted(){
-    Firebase.auth().onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       // If user is signed in.
       if (user) {
         this.addUser(user)
         console.log('User logged in', user.displayName)
-        alert(`You are logged in as ${user.displayName}`)
       }else{
         console.log('User logged out', user)
       }
