@@ -48,7 +48,7 @@ export default {
         await Firebase.auth().signOut()
         this.addUser(null)
         setTimeout(() => {
-        this.$router.push({ path: '/' })
+        this.$router.go({ path: this.$router.path})
         }, 2000)
       }   
     },    

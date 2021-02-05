@@ -84,7 +84,7 @@ export default {
         .then(() => {
         const resetForm = document.querySelector('#login')
         resetForm.reset()
-        // this.$router.push('/Login')
+        this.$router.push('/')
         })
     },
   },

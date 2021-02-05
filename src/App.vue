@@ -21,6 +21,7 @@ export default {
     AppNavbar,
     AppFooter
   },
+
 methods: {
     ...mapActions(['addUser'])
   },
@@ -29,7 +30,7 @@ methods: {
       // If user is signed in.
       if (user) {
         this.addUser(user)
-        console.log('User logged in', user.uid)
+        console.log('User logged in', user.displayName)
       }else{
         console.log('User logged out', user)
       }

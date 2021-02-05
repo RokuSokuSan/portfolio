@@ -9,11 +9,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     users: [],
+    members: [],
     user: null
   },
   getters: {
-    users: state => state.users,
+    members: state => state.members,
     user: state => state.user,
+    users: state => state.users,
   },
   mutations: {
     ...vuexfireMutations,
@@ -22,28 +24,24 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    //bindUser: This action is to get data from firestore so we can display it in our view.
-    // Only to be used when there is a collection created.
-    // bindUser: firestoreAction(({ bindFirestoreRef }) => {
-    //   return bindFirestoreRef('users', db.collection('users'))
-    // }),
+ 
     // createUser: This action creates a new entry for a new user in firebase.
     // It is called from Register.vue
     createUser: firestoreAction((context, payload) => {
       auth.createUserWithEmailAndPassword(payload.email, payload.password)
-      .then(
-        this.user.updateProfile({
-          firstName: payload.firstName,
-          lastname: payload.lastName,
+      .then((userCredentials) => {
+        console.log(userCredentials)
+        userCredentials.user.updateProfile({
           displayName: payload.displayName
         })
-      )
+      })
     }),
     logInUser: firestoreAction((context, payload) => {
       auth.signInWithEmailAndPassword(payload.email, payload.password)
       .then(
         user => {
-          alert(`You are logged in as ${user.email}`)
+          console.log(user)
+          alert(`You are logged in as ${user.displayName}`)
         }
       )
     }),
@@ -52,6 +50,11 @@ export default new Vuex.Store({
     }),
     addUser: ({commit}, user) => {
       commit('ADD_USER', {user})
-    }
+    },
+       //bindUser: This action is to get data from firestore so we can display it in our view.
+    // Only to be used when there is a collection created.
+    // bindUser: firestoreAction(({ bindFirestoreRef }) => {
+    //   return bindFirestoreRef('members', db.collection('members'))
+    // }),
   },
 })

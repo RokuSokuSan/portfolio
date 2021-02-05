@@ -5,8 +5,7 @@
       <p class="text-center h4 mb-4">Register</p>
 
     <div class="form-row mb-4">
-        <div class="col">
-         
+        <!-- <div class="col">
           <label>First Name</label>
           <input v-model="firstName" type="text" class="form-control" />
           <span v-if="!$v.firstName.required && $v.firstName.$dirty" class="text-danger">First Name is required!</span>
@@ -18,13 +17,13 @@
           <input v-model="lastName" type="text" class="form-control" />
           <span v-if="!$v.lastName.required && $v.lastName.$dirty" class="text-danger">Last Name is required</span>
           <span v-if="!$v.lastName.alpha && $v.lastName.$dirty" class="text-danger">Last Name must be in alpha!</span>
-        </div>
+        </div> -->
               <!-- Username -->
       <div class="col">
         <label>Displayname</label>
         <input v-model="displayName" class="form-control" />
         <span v-if="!$v.displayName.required && $v.displayName.$dirty" class="text-danger">Displayname is required</span>
-          <span v-if="!$v.displayName.alpha && $v.displayName.$dirty" class="text-danger">Displayname must be in alpha!</span>
+          <!-- <span v-if="!$v.displayName.alpha && $v.displayName.$dirty" class="text-danger">Displayname must be in alpha!</span> -->
       </div>
       </div>
 
@@ -55,15 +54,13 @@
 
 <script>
 import { mapActions } from "vuex";
-import { required, minLength, maxLength, email, alpha } from "vuelidate/lib/validators";
+import { required, minLength, maxLength, email } from "vuelidate/lib/validators";
 
 export default {
   name: "Register",
   data() {
     return {
       displayName: '',
-      firstName: '',
-      lastName: '',
       email: '',
       password: '',
     };
@@ -74,15 +71,6 @@ export default {
   validations: {
     displayName: {
       required,
-      alpha,
-    },
-    firstName: {
-      required,
-      alpha,
-    },
-    lastName: {
-      required,
-      alpha,
     },
     email: {
       required,
@@ -101,18 +89,16 @@ export default {
 // Get the user info and send it to user.js for auth 
       if (!this.$v.$invalid)
           this.$v.$reset(), 
-          console.log(email),  
+          console.log(this.displayName),  
           this.createUser({
           displayName: this.displayName,
-          firstName: this.firstName,
-          lastName: this.lastName,
           email: this.email,
           password: this.password
         })
         .then(() => {
         const resetForm = document.querySelector('#regForm')
         resetForm.reset()
-        this.$router.push('/Register')
+        this.$router.push('/')
         })
         
     },
