@@ -61,7 +61,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/authorised/MyAccount.vue'),
+    component: () => import(/* webpackChunkName: "Myaccount" */ '../views/authorised/MyAccount.vue'),
     meta: {
       requiresAuth: true,
     },
@@ -74,8 +74,8 @@ const routes = [
   },
   {
     path: '*',
-    name: '404',
-    component: () => import('../views/info/404.vue')
+    name: 'FourOFour',
+    component: () => import('../views/info/FourOFour.vue')
   },
   {
     path: '/logedout',

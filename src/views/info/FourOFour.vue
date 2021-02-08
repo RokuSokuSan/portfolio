@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: "404",
+    name: "FourOFour",
     created() {
         setTimeout(() => {
             this.$router.push({ path: '/' })
