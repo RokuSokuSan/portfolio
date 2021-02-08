@@ -53,7 +53,8 @@ export default {
     data() {
         return {
         email: '',
-        password: ''
+        password: '',
+        displayName: ''
     }
     },
     validations: {
@@ -79,7 +80,8 @@ export default {
           console.log(email),  
           this.logInUser({
           email: this.email,
-          password: this.password
+          password: this.password,
+          displayName: this.displayName
         })
         .then(() => {
         const resetForm = document.querySelector('#login')

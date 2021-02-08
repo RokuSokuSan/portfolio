@@ -30,7 +30,7 @@ methods: {
       // If user is signed in.
       if (user) {
         this.addUser(user)
-        console.log('User logged in', user.displayName)
+        console.log('User logged in', user.displayName, user.email)
       }else{
         console.log('User logged out', user)
       }
