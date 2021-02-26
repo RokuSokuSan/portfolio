@@ -32,7 +32,7 @@ methods: {
         this.addUser(user)
         console.log('User logged in', user.displayName, user.email)
       }else{
-        console.log('User logged out', user)
+        console.log('Successfully logged out')
       }
     })
   }

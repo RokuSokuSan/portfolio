@@ -22,7 +22,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['users']),
+    ...mapGetters(['members']),
   }
 };
 </script>

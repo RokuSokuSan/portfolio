@@ -36,6 +36,9 @@ const routes = [
     name: 'AppChat',
     component: AppChat,
     props: true,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/Login',
@@ -56,7 +59,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
-    path: '/MyAccount',
+    path: '/ManageUsers/:id',
+    name: 'ManageUsers',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "ManageUsers" */ '../views/authorised/ManageUsers.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+
+  },
+  {
+    path: '/MyAccount/:id',
     name: 'myaccount',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

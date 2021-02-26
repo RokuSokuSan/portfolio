@@ -10,7 +10,8 @@ export default new Vuex.Store({
   state: {
     users: [],
     members: [],
-    user: null
+    user: null,
+    messages: [],
   },
   getters: {
     members: state => state.members,
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    loadMessages: firestoreAction(context => {
+      context.bindFirestoreRef('messages', db.collection('messages').orderBy('timestamp'))
+    }),
     //bindUser: This action is to get data from firestore so we can display it in our view.
     // Only to be used when there is a collection created.
     bindUser: firestoreAction(({ bindFirestoreRef }) => {
@@ -42,12 +46,6 @@ export default new Vuex.Store({
     }),
     logInUser: firestoreAction((context, payload) => {
       auth.signInWithEmailAndPassword(payload.email, payload.password)
-      .then(
-        (user) => {
-          alert(`You are logged in as ${user.displayName}`)
-          console.log('User logged in', user.name)
-        }
-      )
     }),
     deleteUser: firestoreAction((context, payload) => {
       auth.remove(payload.email, payload.password)
