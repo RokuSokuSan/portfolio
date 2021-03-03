@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="container d-flex justify-content-center">
       <!-- Default form login -->
-<form id="login" class="border border-light p-5" @submit.prevent="loginForm">
+<form id="login" class="border border-light p-5 w-50" @submit.prevent="loginForm">
 
-    <p class="h4 mb-4">Login</p>
+    <p class="text-center h4 mb-4">Login</p>
 
-       <div class="form-group">
-        <label>Email</label>
+       <div class="form-outline mb-4">
         <input v-model="email" class="form-control" />
+        <label class="form-label">Email</label>
         <span v-if="(!$v.email.required || !$v.email.email) && $v.email.$dirty" class="text-danger">Valid Email is required!</span>
       </div>
       <!-- Password -->
@@ -18,7 +18,7 @@
         <span v-if="(!$v.password.minLength || !$v.password.maxLength) && $v.password.$dirty" class="text-danger">Password must be between {{ $v.password.$params.minLength.min }} and {{ $v.password.$params.maxLength.max }} characters!</span>
       </div>
 
-    <div class="d-flex justify-content-around">
+    <div>
         <div>
             <!-- Remember me -->
             <div class="custom-control custom-checkbox">
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Sign in button -->
-    <button class="btn btn-info btn-block my-4" type="submit">ENTER</button>
+    <button class="btn btn-info ml-4 my-2" type="submit">ENTER</button>
 
     <!-- Register -->
     <p>Not a member?

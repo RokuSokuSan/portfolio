@@ -1,36 +1,37 @@
 <template>
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark indigo lighten-1">
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
   <router-link id="logo-li" class="navbar-brand" to="/">Logotype</router-link>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarRightAlignExample"
+    aria-controls="navbarRightAlignExample" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
   </button>
 
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li><router-link class="nav-link nav-item" to="/" exact>Home</router-link></li>
-      <li v-if="user"><router-link class="nav-link nav-item" to="/BlogView" exact>Blog</router-link></li>
-      <li><router-link class="nav-link nav-item" to="/Chat" exact>Chat</router-link></li>
-      <li><router-link class="nav-link nav-item" to="/Products" exact>Products</router-link></li>
+<!-- Collapsible wrapper -->
+  <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <li class="nav-item"><router-link class="nav-link" to="/" exact>Home</router-link></li>
+      <li v-if="user" class="nav-item"><router-link class="nav-link" to="/BlogView" exact>Blog</router-link></li>
+      <li class="nav-item"><router-link class="nav-link" to="/Chat" exact>Chat</router-link></li>
+      <li class="nav-item"><router-link class="nav-link" to="/Products" exact>Products</router-link></li>
       
-      <li><router-link class="nav-link nav-item" to="/About" exact>About</router-link></li>
+      <li class="nav-item"><router-link class="nav-link nav-item" to="/About" exact>About</router-link></li>
       <!--Login, logout and register -->
       <!-- <li v-if="user"><a class="nav-link nav-item" to="#" @click="signOff">Logout</a></li> -->
-      <li v-if="!user"><router-link class="nav-link nav-item" to="/Login" exact>Login</router-link></li>
-      <li v-if="!user"><router-link class="nav-link nav-item" to="/Register" exact>Register</router-link></li>
+      <li v-if="!user" class="nav-item"><router-link class="nav-link" to="/Login" exact>Login</router-link></li>
+      <li v-if="!user" class="nav-item"><router-link class="nav-link" to="/Register" exact>Register</router-link></li>
       
       
-      
-      <li v-if="user" class="nav-item avatar dropdown">
-        <a class="nav-link dropdown-toggle p-0 pos-name" to="/MyAccount" id="myDropDown" role="button" data-md-toggle="dropdown" aria-expanded="false">
-          {{user.displayName}} <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0 mb-1"
-            alt="avatar image" height="35">
+      <!-- Navbar dropdown -->
+      <li v-if="user" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle p-0 pos-name" to="/MyAccount" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+          | {{user.displayName}} <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle mb-1"
+            alt="avatar image" height="35" loading="lazy">
         </a>
+        <!-- Dropdown menu -->
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li v-if="user"><router-link class="dropdown-item" to="/MyAccount" exact>My account</router-link></li>
+          <li v-if="user"><router-link class="dropdown-item" to="/MyAccount">My account</router-link></li>
           <li v-if="user"><a class="dropdown-item" to="#" @click="signOff">Logout</a></li>
         </ul>
       </li>

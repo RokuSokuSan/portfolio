@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-navbar />
-    <div class="container">
+    <div>
     <router-view />
     </div>
     <app-footer />
@@ -49,8 +49,5 @@ methods: {
 .container {
   width: 80%;
   margin: auto;
-}
-.d-flex {
-  display: flex;
 }
 </style>

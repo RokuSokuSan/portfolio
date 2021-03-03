@@ -1,8 +1,9 @@
 <template>
-  <div class="card text-center m-5 ">
+<div class="container d-flex justify-content-center">
+  <div class="card text-center m-5">
     <div class="card-header">Welcome to the chat area</div>
     <div class="card-body">
-      <div class="card-title ml-4"><p>Enter your name to begin chat:</p></div>
+      <div class="card-title m-5"><p>Enter your name to begin chat:</p></div>
       <form @submit.prevent="enterChat">
         <div>
           <input class="form-control" placeholder="Name" type="text" v-model="name" />
@@ -13,6 +14,7 @@
         <button class="btn btn-success ml-4">Enter Chat</button>
       </form>
     </div>
+  </div>
   </div>
 </template>
 
@@ -55,7 +57,7 @@ export default {
   border-radius: 0px;
   border-color: #ccc;
   border-style: none none solid none;
-  width: 100%;
+  width: 106.5%;
   transition: all .5s;
   margin: -10px;
 }
@@ -69,7 +71,7 @@ export default {
 }
 .form-group:focus + .form-label,
 .form-control:not(:placeholder-shown) + .form-label{
-  transform: translateY(-2.8em) scale(.9);
+  transform: translateY(-2.68em) scale(.9);
   margin: -5px;
 }
 .form-group:focus-within{

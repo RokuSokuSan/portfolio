@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container d-flex justify-content-center">
     <!-- Default form register -->
-    <form id="regForm" class="border border-light p-5" @submit.prevent="submitForm">
+    <form id="regForm" class="border border-light p-5 w-50" @submit.prevent="submitForm">
       <p class="text-center h4 mb-4">Register</p>
 
     <div class="form-row mb-4">
@@ -19,14 +19,13 @@
           <span v-if="!$v.lastName.alpha && $v.lastName.$dirty" class="text-danger">Last Name must be in alpha!</span>
         </div> -->
               <!-- Username -->
-      <div class="col">
+      <div >
         <label>Displayname</label>
         <input v-model="displayName" class="form-control" />
         <span v-if="!$v.displayName.required && $v.displayName.$dirty" class="text-danger">Displayname is required</span>
           <!-- <span v-if="!$v.displayName.alpha && $v.displayName.$dirty" class="text-danger">Displayname must be in alpha!</span> -->
       </div>
       </div>
-
       <!-- E-mail -->
       <div class="form-group">
         <label>Email</label>
@@ -36,12 +35,12 @@
       <!-- Password -->
       <div class="form-group">
         <label>Password</label>
-        <input v-model="password" type="password" class="form-control" />
+        <input v-model="password" type="password" class="form-control " />
         <span v-if="!$v.password.required && $v.password.$dirty" class="text-danger">Password is required!</span>
         <span v-if="(!$v.password.minLength || !$v.password.maxLength) && $v.password.$dirty" class="text-danger">Password must be between {{ $v.password.$params.minLength.min }} and {{ $v.password.$params.maxLength.max }} characters!</span>
       </div>
       <!-- Sign up button -->
-      <button class="btn btn-info my-4 btn-block" type>Register</button>
+      <button class="btn btn-info ml-4 my-2" type>Register</button>
       <!-- Terms of service -->
       <p>
         By clicking <em>Register</em> you agree to our

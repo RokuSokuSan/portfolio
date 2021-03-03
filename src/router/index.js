@@ -20,7 +20,7 @@ const routes = [
   },
   {
     path: '/BlogView',
-    name: 'blogview',
+    name: 'Blogview',
     component: BlogView,
     meta: {
       requiresAuth: true,
@@ -35,10 +35,10 @@ const routes = [
     path: '/appchat',
     name: 'AppChat',
     component: AppChat,
-    props: true,
-    meta: {
-      requiresAuth: true,
-    },
+    // props: true,
+    // meta: {
+    //   requiresAuth: true,
+    // },
   },
   {
     path: '/Login',
@@ -71,7 +71,7 @@ const routes = [
 
   },
   {
-    path: '/MyAccount/:id',
+    path: '/MyAccount/',
     name: 'myaccount',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

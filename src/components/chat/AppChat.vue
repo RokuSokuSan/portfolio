@@ -80,7 +80,7 @@ export default {
 
 <style scoped>
 .container {
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .chat h2 {
   font-size: 2.6em;
