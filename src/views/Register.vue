@@ -1,7 +1,7 @@
 <template>
-  <div class="container d-flex justify-content-center">
+  <div class="d-flex login-form justify-content-center">
     <!-- Default form register -->
-    <form id="regForm" class="border border-light p-5 w-50" @submit.prevent="submitForm">
+    <form id="regForm" class="border border-light p-5  w-100" @submit.prevent="submitForm">
       <p class="text-center h4 mb-4">Register</p>
 
     <div class="form-row mb-4">
@@ -105,5 +105,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.login-form form  {
+  max-width: 400px;
+}
 </style>

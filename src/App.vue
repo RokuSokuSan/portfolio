@@ -1,9 +1,9 @@
 <template>
   <div>
     <app-navbar />
-    <div>
+
     <router-view />
-    </div>
+
     <app-footer />
   </div>
 </template>
@@ -30,7 +30,7 @@ methods: {
       // If user is signed in.
       if (user) {
         this.addUser(user)
-        console.log('User logged in', user.displayName, user.email)
+        console.log('User logged in:', user.displayName, '| E-mail:', user.email, '| UserID:', user.uid)
       }else{
         console.log('Successfully logged out')
       }

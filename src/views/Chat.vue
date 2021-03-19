@@ -1,5 +1,5 @@
 <template>
-<div class="container d-flex justify-content-center">
+<div class="d-flex justify-content-center">
   <div class="card text-center m-5">
     <div class="card-header">Welcome to the chat area</div>
     <div class="card-body">

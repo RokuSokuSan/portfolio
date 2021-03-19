@@ -1,13 +1,13 @@
 <template>
-  <div class="container d-flex justify-content-center">
+  <div class="d-flex login-form justify-content-center">
       <!-- Default form login -->
-<form id="login" class="border border-light p-5 w-50" @submit.prevent="loginForm">
+<form id="login" class="border border-light p-5 w-100" @submit.prevent="loginForm">
 
-    <p class="text-center h4 mb-4">Login</p>
+    <p class="text-center h4 mb-4">Sign in</p>
 
-       <div class="form-outline mb-4">
+       <div class="form-group">
+        <label>Email</label>
         <input v-model="email" class="form-control" />
-        <label class="form-label">Email</label>
         <span v-if="(!$v.email.required || !$v.email.email) && $v.email.$dirty" class="text-danger">Valid Email is required!</span>
       </div>
       <!-- Password -->
@@ -23,7 +23,7 @@
             <!-- Remember me -->
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="">
-                <label class="custom-control-label" for="">Remember me</label>
+                <label class="custom-control-label m-2" for="">Remember me</label>
             </div>
         </div>
         <div>
@@ -93,6 +93,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .login-form form {
+    max-width: 400px;
+    
+  }
 </style>
+

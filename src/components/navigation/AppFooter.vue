@@ -1,9 +1,9 @@
 <template>
 <!-- Footer -->
-<footer class="page-footer font-small indigo fixed-bottom">
+<footer class="font-small bg-dark fixed-bottom">
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">
+  <div class="footer-copyright text-center py-3 text-white">
     {{ new Date().getFullYear() }} Copyright:  <a href="#"> excessit.se</a>
     <span class="small ml-4">
         <router-link class="mx-2" to="/about">About</router-link>

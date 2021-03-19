@@ -1,46 +1,50 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "express": "^4.17.1",
-    "firebase": "^8.2.1",
-    "lodash": "^4.17.20",
-    "moment": "^2.29.1",
-    "vue": "^2.6.11",
-    "vue-chat-scroll": "^1.4.0",
-    "vue-router": "^3.2.0",
-    "vuelidate": "^0.7.6",
-    "vuex": "^3.6.0",
-    "vuexfire": "^3.2.5"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "^4.5.9",
-    "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "description": "## Project setup ``` npm install ```",
-  "main": ".eslintrc.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RokuSokuSan/portfolio.git"
-  },
-  "author": "anthony",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RokuSokuSan/portfolio/issues"
-  },
-  "homepage": "https://github.com/RokuSokuSan/portfolio#readme"
-}
+    "name": "portfolio",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "serve": "vue-cli-service serve",
+      "build": "vue-cli-service build",
+      "lint": "vue-cli-service lint"
+    },
+    "dependencies": {
+      "core-js": "^3.6.5",
+      "eslint": "^7.22.0",
+      "express": "^4.17.1",
+      "firebase": "^8.2.1",
+      "lodash": "^4.17.20",
+      "moment": "^2.29.1",
+      "vue": "^2.6.11",
+      "vue-chat-scroll": "^1.4.0",
+      "vue-router": "^3.2.0",
+      "vuelidate": "^0.7.6",
+      "vuex": "^3.6.0",
+      "vuexfire": "^3.2.5"
+    },
+    "devDependencies": {
+      "@vue/cli-plugin-babel": "~4.5.0",
+      "@vue/cli-plugin-eslint": "~4.5.0",
+      "@vue/cli-plugin-router": "~4.5.0",
+      "@vue/cli-plugin-vuex": "^4.5.9",
+      "@vue/cli-service": "~4.5.0",
+      "babel-eslint": "^10.1.0",
+      "eslint-plugin-vue": "^6.2.2",
+      "node-sass": "^5.0.0",
+      "sass-loader": "^11.0.1",
+      "scss": "^0.2.4",
+      "vue-template-compiler": "^2.6.11"
+    },
+    "description": "## Project setup ``` npm install ```",
+    "main": ".eslintrc.js",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/RokuSokuSan/portfolio.git"
+    },
+    "author": "anthony",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/RokuSokuSan/portfolio/issues"
+    },
+    "homepage": "https://github.com/RokuSokuSan/portfolio#readme"
+  }
+  

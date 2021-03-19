@@ -9,12 +9,12 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     users: [],
-    members: [],
+    registered: [],
     user: null,
     messages: [],
   },
   getters: {
-    members: state => state.members,
+    registered: state => state.registered,
     user: state => state.user,
     users: state => state.users,
   },
@@ -25,28 +25,37 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    //Chat function loadMessages
     loadMessages: firestoreAction(context => {
       context.bindFirestoreRef('messages', db.collection('messages').orderBy('timestamp'))
     }),
     //bindUser: This action is to get data from firestore so we can display it in our view.
     // Only to be used when there is a collection created.
     bindUser: firestoreAction(({ bindFirestoreRef }) => {
-      return bindFirestoreRef('members', db.collection('members'))
+      return bindFirestoreRef('registered', db.collection('registered'))
     }),
-    // createUser: This action creates a new entry for a new user in firebase.
+    // createUser: This action creates a new entry for a new user in firebase Auth.
+    // then we set the UID to match the member subscription
     // It is called from Register.vue
     createUser: firestoreAction((context, payload) => {
       auth.createUserWithEmailAndPassword(payload.email, payload.password)
       .then((userCredentials) => {
-        console.log(userCredentials)
         userCredentials.user.updateProfile({
           displayName: payload.displayName
         })
-      })
+        // Tie UID from AUTH to Collection ""registered" 
+        return db.collection('registered').doc(userCredentials.user.uid).set({
+          myReg: payload.displayName
+        })
+        })
     }),
+
+    //Log in the user
     logInUser: firestoreAction((context, payload) => {
       auth.signInWithEmailAndPassword(payload.email, payload.password)
     }),
+
+    //Delete the user or remove account self service
     deleteUser: firestoreAction((context, payload) => {
       auth.remove(payload.email, payload.password)
     }),
